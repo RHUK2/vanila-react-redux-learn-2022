@@ -6,10 +6,11 @@ const number = document.querySelector('#number');
 
 number.textContent = 0;
 
+// Action
 const ADD = 'add';
 const MINUS = 'minus';
 
-// 초기화 한 번, 액션 콜 때 한 번
+// Reducer
 const countModifier = (count = 0, action) => {
   switch (action.type) {
     case ADD:
@@ -21,13 +22,17 @@ const countModifier = (count = 0, action) => {
   }
 };
 
+// Create Store
 const countStore = createStore(countModifier);
 
+// Get State
 const onChange = () => {
   number.textContent = countStore.getState();
 };
 
+// Subscribe
 countStore.subscribe(onChange);
-// 액션은 type 프로퍼티를 가진 객체
+
+// Dispatch
 add.addEventListener('click', () => countStore.dispatch({ type: ADD }));
 minus.addEventListener('click', () => countStore.dispatch({ type: MINUS }));

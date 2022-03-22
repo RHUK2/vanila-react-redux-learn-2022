@@ -26,30 +26,26 @@ const Home = ({ todos, addTodo }) => {
       </form>
       <ul>
         {todos.map((todo) => (
-          <Todo //
-            key={todo.id}
-            id={todo.id}
-            text={todo.text}
-          />
+          <Todo key={todo.id} id={todo.id} text={todo.text} />
         ))}
       </ul>
     </>
   );
 };
 
-// store.getState();
+// Get State
 const mapStateToProps = (state, ownProps) => {
   return { todos: state };
 };
 
-// store.dispatch();
+// Dispatch
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     addTodo: (text) => dispatch(actionCreators.addTodo(text)),
   };
 };
 
-// store와의 연결
+// Connect Store
 // export default connect(mapStateToProps)(Home);
 // export default connect(null, mapDispatchToProps)(Home);
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

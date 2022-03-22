@@ -4,13 +4,14 @@ const form = document.querySelector('#form');
 const text = document.querySelector('#text');
 const list = document.querySelector('#list');
 
+// Action Label
 const ADD_TODO = 'ADD_TODO';
 const DELETE_TODO = 'DELETE_TODO';
 
+// Action
 const addTodo = (todo) => {
   return { type: ADD_TODO, text: todo };
 };
-
 const deleteTodo = (id) => {
   return { type: DELETE_TODO, id: id };
 };
@@ -18,6 +19,7 @@ const deleteTodo = (id) => {
 // Do Not Use Mutate(변하는) State!!!
 // 기존 상태를 직접 수정하는 것이 아니라 새로운 상태를 retrun하는 것!!
 // React Hooks의 setState처럼 작동
+// Reducer
 const reducer = (state = [], action) => {
   switch (action.type) {
     case ADD_TODO:
@@ -29,16 +31,18 @@ const reducer = (state = [], action) => {
   }
 };
 
+// Create Store
 const store = createStore(reducer);
 
+// Get State
 const onChange = () => {
   console.log(store.getState());
 };
 
+// Dispatch
 const dispatchAddTodo = (todo) => {
   store.dispatch(addTodo(todo));
 };
-
 const dispatchDeleteTodo = (e) => {
   const id = parseInt(e.target.parentNode.id);
   store.dispatch(deleteTodo(id));
@@ -61,8 +65,8 @@ const paintTodos = () => {
   });
 };
 
+// Subscribe
 store.subscribe(onChange);
-
 store.subscribe(paintTodos);
 
 const handleSubmit = (e) => {

@@ -13,6 +13,7 @@ const Detail = ({ todo }) => {
   );
 };
 
+// Get State
 const mapStateToProps = (state, ownProps) => {
   const {
     match: {
@@ -24,4 +25,5 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
+// Connect Store
 export default connect(mapStateToProps)(Detail);

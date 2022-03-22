@@ -12,10 +12,12 @@ const Todo = ({ id, text, handleClick }) => {
   );
 };
 
+// Dispatch
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     handleClick: () => dispatch(actionCreators.deleteTodo(ownProps.id)),
   };
 };
 
+// Connect Store
 export default connect(null, mapDispatchToProps)(Todo);
